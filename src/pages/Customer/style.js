@@ -4,7 +4,8 @@ import styled from "styled-components/native";
 const CustomerContainer = styled(View)`
   background-color: #ffffff;
   flex: 1;
-  width: 85%;
+  width: 100%;
+  align-items: center;
 `;
 
 const CustomerNav = styled(View)`
