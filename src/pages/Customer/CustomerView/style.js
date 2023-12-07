@@ -1,23 +1,6 @@
 import { View, Text } from "react-native";
 import styled from "styled-components/native";
 
-const CustomerInfoContainer = styled(View)`
-  background-color: #ffffff;
-  flex: 1;
-  width: 85%;
-`;
-
-const CustomerInfoNav = styled(View)`
-  margin-top: 30px;
-`;
-
-const PageTitle = styled(Text)`
-  color: #1f2024;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-`;
-
 const CustomerInfoContent = styled(View)`
   margin-top: 14px;
   gap: 15px;
@@ -40,11 +23,8 @@ const CustomerDataTitle = styled(CustomerDataText)`
 `;
 
 export {
-  CustomerInfoContainer,
-  CustomerInfoNav,
-  CustomerInfoContent,
   CustomerData,
   CustomerDataTitle,
   CustomerDataText,
-  PageTitle,
+  CustomerInfoContent,
 };
