@@ -3,6 +3,7 @@ import { CustomerContainer, CustomerNav, PageTitle } from "../style";
 import { Controller, useForm } from "react-hook-form";
 import styled from "styled-components/native";
 import Input from "../../../components/Input";
+import SaveButton from "../../../components/Button";
 
 export default function CustomerForm() {
   const {
@@ -147,7 +148,7 @@ export default function CustomerForm() {
           )}
           name="customerNumber"
         />
-        <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+        <SaveButton onPress={handleSubmit(onSubmit)} />
       </CustomerContent>
     </CustomerContainer>
   );
