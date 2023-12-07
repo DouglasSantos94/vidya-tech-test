@@ -1,43 +1,53 @@
+import {
+  CustomerData,
+  CustomerDataTitle,
+  CustomerDataText,
+  CustomerInfoContainer,
+  CustomerInfoContent,
+  CustomerInfoNav,
+  PageTitle,
+} from "./style";
+
 export default function CustomerView() {
   return (
-    <CustomerInfo>
+    <CustomerInfoContainer>
       <CustomerInfoNav>
         <PageTitle>Nome do cliente</PageTitle>
       </CustomerInfoNav>
       <CustomerInfoContent>
         <CustomerData>
-          <CustomerInfoTitle>CNPJ</CustomerInfoTitle>
-          <CustomerInfoValue>00000000</CustomerInfoValue>
+          <CustomerDataTitle>CNPJ</CustomerDataTitle>
+          <CustomerDataText>00000000</CustomerDataText>
         </CustomerData>
         <CustomerData>
-          <CustomerInfoTitle>Telefone</CustomerInfoTitle>
-          <CustomerInfoValue>949521984</CustomerInfoValue>
+          <CustomerDataTitle>Telefone</CustomerDataTitle>
+          <CustomerDataText>949521984</CustomerDataText>
         </CustomerData>
         <CustomerData>
-          <CustomerInfoTitle>CEP</CustomerInfoTitle>
-          <CustomerInfoValue>987651</CustomerInfoValue>
+          <CustomerDataTitle>CEP</CustomerDataTitle>
+          <CustomerDataText>987651</CustomerDataText>
         </CustomerData>
         <CustomerData>
-          <CustomerInfoTitle>Estado</CustomerInfoTitle>
-          <CustomerInfoValue>SC</CustomerInfoValue>
+          <CustomerDataTitle>Estado</CustomerDataTitle>
+          <CustomerDataText>SC</CustomerDataText>
         </CustomerData>
         <CustomerData>
-          <CustomerInfoTitle>Cidade</CustomerInfoTitle>
-          <CustomerInfoValue>Gabir</CustomerInfoValue>
+          <CustomerDataTitle>Cidade</CustomerDataTitle>
+          <CustomerDataText>Gabir</CustomerDataText>
         </CustomerData>
         <CustomerData>
-          <CustomerInfoTitle>Bairro</CustomerInfoTitle>
-          <CustomerInfoValue>Tapera</CustomerInfoValue>
+          <CustomerDataTitle>Bairro</CustomerDataTitle>
+          <CustomerDataText>Tapera</CustomerDataText>
         </CustomerData>
         <CustomerData>
-          <CustomerInfoTitle>Endereço</CustomerInfoTitle>
-          <CustomerInfoValue>Rua 2</CustomerInfoValue>
+          <CustomerDataTitle>Endereço</CustomerDataTitle>
+          <CustomerDataText>Rua 2</CustomerDataText>
         </CustomerData>
         <CustomerData>
-          <CustomerInfoTitle>Número</CustomerInfoTitle>
-          <CustomerInfoValue>dasds</CustomerInfoValue>
+          <CustomerDataTitle>Número</CustomerDataTitle>
+          <CustomerDataText>dasds</CustomerDataText>
         </CustomerData>
       </CustomerInfoContent>
-    </CustomerInfo>
+    </CustomerInfoContainer>
   );
 }
