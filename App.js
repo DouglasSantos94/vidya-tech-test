@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import CustomerView from "./src/pages/Customer/CustomerView";
 import styled from "styled-components/native";
+import CustomerForm from "./src/pages/Customer/CustomerForm";
 
 export default function App() {
   return (
@@ -11,7 +12,8 @@ export default function App() {
         barStyle="dark-content"
         backgroundColor="white"
       />
-      <CustomerView />
+      {/* <CustomerView /> */}
+      <CustomerForm />
     </AppContainer>
   );
 }

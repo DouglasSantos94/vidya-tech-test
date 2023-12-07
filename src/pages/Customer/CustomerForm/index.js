@@ -1,7 +1,8 @@
-import { TextInput, View } from "react-native";
+import { Button, TextInput, View } from "react-native";
 import { CustomerContainer, CustomerNav, PageTitle } from "../style";
 import { Controller, useForm } from "react-hook-form";
 import styled from "styled-components/native";
+import Input from "../../../components/Input";
 
 export default function CustomerForm() {
   const {
@@ -21,6 +22,8 @@ export default function CustomerForm() {
       customerNumber: "",
     },
   });
+
+  const onSubmit = (data) => console.log(data);
   return (
     <CustomerContainer>
       <CustomerNav>
@@ -31,7 +34,12 @@ export default function CustomerForm() {
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              labelText="Nome"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
           name="customerName"
         />
@@ -39,7 +47,12 @@ export default function CustomerForm() {
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              labelText="CNPJ"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
           name="customerCnpj"
         />
@@ -47,7 +60,12 @@ export default function CustomerForm() {
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              labelText="Telefone"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
           name="customerPhoneNumber"
         />
@@ -55,15 +73,25 @@ export default function CustomerForm() {
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              labelText="CEP"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
-          name="customerZipCOde"
+          name="customerZipCode"
         />
         <Controller
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              labelText="Estado"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
           name="customerState"
         />
@@ -71,7 +99,12 @@ export default function CustomerForm() {
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              labelText="Cidade"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
           name="customerCity"
         />
@@ -79,7 +112,12 @@ export default function CustomerForm() {
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              labelText="Bairro"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
           name="customerNeighborhood"
         />
@@ -87,7 +125,12 @@ export default function CustomerForm() {
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              labelText="Endereço"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
           name="customerStreet"
         />
@@ -95,10 +138,16 @@ export default function CustomerForm() {
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+            <Input
+              labelText="Número"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
           )}
           name="customerNumber"
         />
+        <Button title="Submit" onPress={handleSubmit(onSubmit)} />
       </CustomerContent>
     </CustomerContainer>
   );
@@ -106,4 +155,7 @@ export default function CustomerForm() {
 
 const CustomerContent = styled(View)`
   margin-top: 14px;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
 `;
