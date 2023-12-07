@@ -7,12 +7,15 @@ const CustomerInfoContainer = styled(View)`
   width: 85%;
 `;
 
-const CustomerInfoNav = styled(View)``;
+const CustomerInfoNav = styled(View)`
+  margin-top: 30px;
+`;
 
 const PageTitle = styled(Text)`
   color: #1f2024;
   font-size: 14px;
   font-weight: bold;
+  text-align: center;
 `;
 
 const CustomerInfoContent = styled(View)`
