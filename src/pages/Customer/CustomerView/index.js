@@ -2,18 +2,16 @@ import {
   CustomerData,
   CustomerDataTitle,
   CustomerDataText,
-  CustomerInfoContainer,
   CustomerInfoContent,
-  CustomerInfoNav,
-  PageTitle,
 } from "./style";
+import { CustomerContainer, CustomerNav, PageTitle } from "../style";
 
 export default function CustomerView() {
   return (
-    <CustomerInfoContainer>
-      <CustomerInfoNav>
+    <CustomerContainer>
+      <CustomerNav>
         <PageTitle>Nome do cliente</PageTitle>
-      </CustomerInfoNav>
+      </CustomerNav>
       <CustomerInfoContent>
         <CustomerData>
           <CustomerDataTitle>CNPJ</CustomerDataTitle>
@@ -48,6 +46,6 @@ export default function CustomerView() {
           <CustomerDataText>dasds</CustomerDataText>
         </CustomerData>
       </CustomerInfoContent>
-    </CustomerInfoContainer>
+    </CustomerContainer>
   );
 }
