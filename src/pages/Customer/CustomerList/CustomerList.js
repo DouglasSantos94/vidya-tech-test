@@ -1,4 +1,4 @@
-import { Container, Header, PageTitle } from "../../../components";
+import { Container, Header, PageTitle, SearchBar } from "../../../components";
 
 function CustomerList() {
   return (
@@ -6,6 +6,7 @@ function CustomerList() {
       <Header>
         <PageTitle pageTitleText={"Clientes"} />
       </Header>
+      <SearchBar />
     </Container>
   );
 }
