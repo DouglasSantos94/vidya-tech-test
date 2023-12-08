@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import styled from "styled-components/native";
 
-function Header() {
-  return <StyledHeader />;
+function Header({ children }) {
+  return <StyledHeader>{children}</StyledHeader>;
 }
 
 const StyledHeader = styled(View)`

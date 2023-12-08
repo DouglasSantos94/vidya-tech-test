@@ -1,8 +1,8 @@
 import { Text } from "react-native";
 import styled from "styled-components/native";
 
-function PageTitle() {
-  return <StyledPageTitle />;
+function PageTitle({ pageTitleText }) {
+  return <StyledPageTitle>{pageTitleText}</StyledPageTitle>;
 }
 
 const StyledPageTitle = styled(Text)`
