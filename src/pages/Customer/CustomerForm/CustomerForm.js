@@ -1,11 +1,16 @@
-import { Button, TextInput, View } from "react-native";
-import { CustomerContainer, CustomerNav, PageTitle } from "../style";
+import { View } from "react-native";
 import { Controller, useForm } from "react-hook-form";
 import styled from "styled-components/native";
-import Input from "../../../components/Input";
-import SaveButton from "../../../components/Button";
+import {
+  Container,
+  Header,
+  Input,
+  PageTitle,
+  Button,
+} from "../../../components";
+import { CustomerFormContent } from "./CustomerForm.styles";
 
-export default function CustomerForm() {
+function CustomerForm() {
   const {
     control,
     handleSubmit,
@@ -26,11 +31,11 @@ export default function CustomerForm() {
 
   const onSubmit = (data) => console.log(data);
   return (
-    <CustomerContainer>
-      <CustomerNav>
+    <Container>
+      <Header>
         <PageTitle>Cadastro de cliente</PageTitle>
-      </CustomerNav>
-      <CustomerContent>
+      </Header>
+      <CustomerFormContent>
         <Controller
           control={control}
           rules={{ required: true }}
@@ -148,15 +153,10 @@ export default function CustomerForm() {
           )}
           name="customerNumber"
         />
-        <SaveButton onPress={handleSubmit(onSubmit)} />
-      </CustomerContent>
-    </CustomerContainer>
+        <Button onPress={handleSubmit(onSubmit)} />
+      </CustomerFormContent>
+    </Container>
   );
 }
 
-const CustomerContent = styled(View)`
-  margin-top: 14px;
-  width: 100%;
-  align-items: center;
-  gap: 10px;
-`;
+export { CustomerForm };

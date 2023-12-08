@@ -3,15 +3,15 @@ import {
   CustomerDataTitle,
   CustomerDataText,
   CustomerInfoContent,
-} from "./style";
-import { CustomerContainer, CustomerNav, PageTitle } from "../style";
+} from "./CustomerView.styles";
+import { Container, Header, PageTitle } from "../../../components";
 
-export default function CustomerView() {
+function CustomerView() {
   return (
-    <CustomerContainer>
-      <CustomerNav>
+    <Container>
+      <Header>
         <PageTitle>Nome do cliente</PageTitle>
-      </CustomerNav>
+      </Header>
       <CustomerInfoContent>
         <CustomerData>
           <CustomerDataTitle>CNPJ</CustomerDataTitle>
@@ -46,6 +46,8 @@ export default function CustomerView() {
           <CustomerDataText>dasds</CustomerDataText>
         </CustomerData>
       </CustomerInfoContent>
-    </CustomerContainer>
+    </Container>
   );
 }
+
+export { CustomerView };
