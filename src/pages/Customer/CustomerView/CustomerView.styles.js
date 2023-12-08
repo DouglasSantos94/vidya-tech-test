@@ -5,6 +5,7 @@ const CustomerInfoContent = styled(View)`
   margin-top: 14px;
   gap: 15px;
   height: 35%;
+  width: 85%;
 `;
 
 const CustomerData = styled(View)`

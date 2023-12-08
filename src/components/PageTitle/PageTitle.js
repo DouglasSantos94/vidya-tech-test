@@ -9,7 +9,6 @@ const StyledPageTitle = styled(Text)`
   color: #1f2024;
   font-size: 14px;
   font-weight: bold;
-  text-align: center;
 `;
 
 export { PageTitle };

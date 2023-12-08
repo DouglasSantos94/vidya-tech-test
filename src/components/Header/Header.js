@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Image, View } from "react-native";
 import styled from "styled-components/native";
 
 function Header({ children }) {
@@ -6,7 +6,12 @@ function Header({ children }) {
 }
 
 const StyledHeader = styled(View)`
-  margin-top: 30px;
+  width: 85%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 export { Header };

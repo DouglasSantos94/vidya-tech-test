@@ -7,7 +7,6 @@ function Container({ children }) {
 
 const StyledContainer = styled(View)`
   background-color: #ffffff;
-  flex: 1;
   width: 100%;
   align-items: center;
 `;
