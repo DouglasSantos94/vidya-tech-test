@@ -1,15 +1,5 @@
 import { Image, TextInput, View } from "react-native";
 import styled from "styled-components/native";
-import { Feather } from "@expo/vector-icons";
-
-function SearchBar() {
-  return (
-    <SearchBarContainer>
-      <SearchIcon source={require("../../assets/Search.png")} />
-      <SearchText placeholder="Pesquisar" />
-    </SearchBarContainer>
-  );
-}
 
 const SearchBarContainer = styled(View)`
   flex-direction: row;
@@ -33,4 +23,4 @@ const SearchText = styled(TextInput)`
   height: 44px;
 `;
 
-export { SearchBar };
+export { SearchBarContainer, SearchIcon, SearchText };
