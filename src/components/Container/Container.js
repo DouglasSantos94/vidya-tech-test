@@ -1,8 +1,8 @@
 import { View } from "react-native";
 import styled from "styled-components/native";
 
-function Container() {
-  return <StyledContainer />;
+function Container({ children }) {
+  return <StyledContainer>{children}</StyledContainer>;
 }
 
 const StyledContainer = styled(View)`

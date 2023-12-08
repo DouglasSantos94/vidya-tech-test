@@ -1,6 +1,4 @@
-import { View } from "react-native";
 import { Controller, useForm } from "react-hook-form";
-import styled from "styled-components/native";
 import {
   Container,
   Header,

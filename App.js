@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native";
-import CustomerView from "./src/pages/Customer/CustomerView";
+import CustomerView from "./src/pages";
 import styled from "styled-components/native";
-import CustomerForm from "./src/pages/Customer/CustomerForm";
+import { CustomerForm } from "./src/pages";
 
 export default function App() {
   return (
