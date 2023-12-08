@@ -4,13 +4,14 @@ import {
   CustomerDataText,
   CustomerInfoContent,
 } from "./CustomerView.styles";
-import { Container, Header, PageTitle } from "../../../components";
+import { BackIcon, Container, Header, PageTitle } from "../../../components";
 
-function CustomerView() {
+function CustomerView({ navigation }) {
   return (
     <Container>
       <Header>
-        <PageTitle>Nome do cliente</PageTitle>
+        <BackIcon onPress={() => navigation.goBack()} />
+        <PageTitle pageTitleText="Nome do cliente" />
       </Header>
       <CustomerInfoContent>
         <CustomerData>
