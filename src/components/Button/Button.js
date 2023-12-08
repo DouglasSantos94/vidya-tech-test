@@ -1,10 +1,10 @@
 import { Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
-function Button({ onPress }) {
+function Button({ onPress, text }) {
   return (
     <StyledButton onPress={onPress}>
-      <Text style={{ color: "white", fontWeight: "bold" }}>Salvar</Text>
+      <Text style={{ color: "white", fontWeight: "bold" }}>{text}</Text>
     </StyledButton>
   );
 }

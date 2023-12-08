@@ -5,10 +5,11 @@ import {
   Input,
   PageTitle,
   Button,
+  BackIcon,
 } from "../../../components";
 import { CustomerFormContent } from "./CustomerForm.styles";
 
-function CustomerForm() {
+function CustomerForm({ navigation }) {
   const {
     control,
     handleSubmit,
@@ -31,7 +32,8 @@ function CustomerForm() {
   return (
     <Container>
       <Header>
-        <PageTitle>Cadastro de cliente</PageTitle>
+        <BackIcon onPress={() => navigation.goBack()} />
+        <PageTitle pageTitleText="Cadastro de clientes" />
       </Header>
       <CustomerFormContent>
         <Controller

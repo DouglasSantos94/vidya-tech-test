@@ -1,5 +1,11 @@
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import { Container, Header, PageTitle, SearchBar } from "../../../components";
+import {
+  Button,
+  Container,
+  Header,
+  PageTitle,
+  SearchBar,
+} from "../../../components";
 import styled from "styled-components/native";
 
 const generateColor = (key) => {
@@ -9,7 +15,7 @@ const generateColor = (key) => {
   return `#${randomColor}`;
 };
 
-function CustomerList() {
+function CustomerList({ navigation }) {
   const data = [
     { key: "1", title: "Item 1", description: "description 1" },
     { key: "2", title: "Item 2", description: "description 2" },
@@ -26,16 +32,11 @@ function CustomerList() {
 
   return (
     <Container>
-      <Header>
-        <PageTitle pageTitleText={"Clientes"} />
-      </Header>
       <SearchBar />
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <ListItemContainer
-            onPress={() => alert(`${item.title} ${item.description}`)}
-          >
+          <ListItemContainer onPress={() => navigation.navigate("Detalhe")}>
             <ListItemIcon key={item.key}>
               <ListItemIconText>
                 {generateInitialLetters(item.title)}
@@ -47,7 +48,11 @@ function CustomerList() {
             </Data>
           </ListItemContainer>
         )}
-        style={{ width: "90%" }}
+        style={{ width: "90%", marginBottom: 30 }}
+      />
+      <Button
+        text="Cadastrar cliente"
+        onPress={() => navigation.navigate("Cadastrar")}
       />
     </Container>
   );
