@@ -1,6 +1,6 @@
-import InputLabel from "./InputLabel";
-import { InputText } from "./InputText";
-import { InputWithLabel } from "./style";
+import InputLabel from "./InputLabel/InputLabel";
+import { InputText } from "./InputText/InputText";
+import { InputWithLabel } from "./Input.styles";
 
 export default function Input({ labelText, onBlur, onChangeText, value }) {
   return (
