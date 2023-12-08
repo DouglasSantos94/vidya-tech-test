@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
-export default function SaveButton({ onPress }) {
+function Button({ onPress }) {
   return (
     <StyledButton onPress={onPress}>
       <Text style={{ color: "white", fontWeight: "bold" }}>Salvar</Text>
@@ -18,3 +18,5 @@ const StyledButton = styled(TouchableOpacity)`
   background-color: #006ffd;
   border-radius: 10px;
 `;
+
+export { Button };
