@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native";
-import CustomerView from "./src/pages";
+import CustomerView, { CustomerList } from "./src/pages";
 import styled from "styled-components/native";
 import { CustomerForm } from "./src/pages";
 
@@ -13,7 +13,8 @@ export default function App() {
         backgroundColor="white"
       />
       {/* <CustomerView /> */}
-      <CustomerForm />
+      {/* <CustomerForm /> */}
+      <CustomerList />
     </AppContainer>
   );
 }
