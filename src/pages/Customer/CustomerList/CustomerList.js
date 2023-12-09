@@ -36,7 +36,9 @@ function CustomerList({ navigation }) {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <ListItemContainer onPress={() => navigation.navigate("Detalhe")}>
+          <ListItemContainer
+            onPress={() => navigation.navigate("CustomerDetail")}
+          >
             <ListItemIcon key={item.key}>
               <ListItemIconText>
                 {generateInitialLetters(item.title)}
@@ -52,7 +54,7 @@ function CustomerList({ navigation }) {
       />
       <Button
         text="Cadastrar cliente"
-        onPress={() => navigation.navigate("Cadastrar")}
+        onPress={() => navigation.navigate("NewCustomer")}
       />
     </Container>
   );
