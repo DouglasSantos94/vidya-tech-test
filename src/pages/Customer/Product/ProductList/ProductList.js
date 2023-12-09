@@ -1,4 +1,4 @@
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { Button, Container, SearchBar } from "../../../../components";
 import styled from "styled-components";
 
@@ -18,6 +18,12 @@ function ProductList({ navigation }) {
         data={data}
         renderItem={({ item }) => (
           <ProductItem onPress={() => navigation.navigate("ProductDetail")}>
+            <ProductImageContainer>
+              <Image
+                source={require("../../../../assets/product-without-image.png")}
+                style={{ borderTopLeftRadius: 16, borderTopRightRadius: 16 }}
+              />
+            </ProductImageContainer>
             <ProductInfoContainer>
               <ProductTitle>{item.title}</ProductTitle>
               <ProductPrice>{item.price}</ProductPrice>
@@ -28,7 +34,7 @@ function ProductList({ navigation }) {
         numColumns={2}
       />
       <Button
-        text="Cadastrar cliente"
+        text="Cadastrar produto"
         onPress={() => navigation.navigate("ProductForm")}
       />
     </ListContainer>
@@ -37,27 +43,35 @@ function ProductList({ navigation }) {
 
 const ListContainer = styled(View)`
   width: 100%;
+  height: 100%;
   align-items: center;
+  background-color: white;
 `;
 
 const ProductListContainer = styled(FlatList)`
-  width: 90%;
-  border: solid 1px blue;
+  width: 85%;
+  margin-top: 30px;
+  background-color: white;
 `;
 
 const ProductItem = styled(TouchableOpacity)`
   width: 166px;
   height: 160px;
-  border-radius: 10px;
+  border-radius: 16px;
   box-sizing: border-box;
+  background-color: #f8f9fe;
+  margin-bottom: 30px;
+`;
+
+const ProductImageContainer = styled(View)`
+  width: 166px;
+  height: 91px;
 `;
 
 const ProductInfoContainer = styled(View)`
   height: 69px;
-  width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: #f8f9fe;
 `;
 
 const ProductTitle = styled(Text)`
