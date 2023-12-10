@@ -59,7 +59,7 @@ function ProductTabs() {
         }}
       />
       <ProductStack.Screen
-        name="NewProduct"
+        name="ProductForm"
         component={ProductForm}
         options={{ headerShown: false, presentation: "modal" }}
       />
