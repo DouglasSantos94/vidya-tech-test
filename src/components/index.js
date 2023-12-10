@@ -1,4 +1,4 @@
-export { BackIcon } from "./Icon/Icon";
+export { BackIcon, CloseIcon } from "./Icon/Icon";
 export { Container } from "./Container/Container";
 export { Button } from "./Button/Button";
 export { Header } from "./Header/Header";

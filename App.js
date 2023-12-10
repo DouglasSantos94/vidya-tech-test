@@ -9,7 +9,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "@expo/vector-icons/MaterialIcons";
 
-import { CustomerForm, CustomerList, CustomerView } from "./src/pages";
+import {
+  CustomerForm,
+  CustomerList,
+  CustomerView,
+  ProductForm,
+  ProductList,
+  ProductDetail,
+} from "./src/pages";
 
 const CustomerStack = createStackNavigator();
 const ProductStack = createStackNavigator();
@@ -45,7 +52,7 @@ function ProductTabs() {
     <ProductStack.Navigator>
       <ProductStack.Screen
         name="Products"
-        component={CustomerList}
+        component={ProductList}
         options={{
           headerTitleAlign: "center",
           headerShadowVisible: false,
@@ -53,12 +60,12 @@ function ProductTabs() {
       />
       <ProductStack.Screen
         name="NewProduct"
-        component={CustomerForm}
+        component={ProductForm}
         options={{ headerShown: false, presentation: "modal" }}
       />
       <ProductStack.Screen
         name="ProductDetail"
-        component={CustomerView}
+        component={ProductDetail}
         options={{ headerShown: false, presentation: "modal" }}
       />
     </ProductStack.Navigator>
@@ -128,7 +135,7 @@ export default function App() {
           },
         })}
       >
-        <Tab.Screen name="Pedidos" component={OrderTabs} />
+        {/* <Tab.Screen name="Pedidos" component={OrderTabs} /> */}
         <Tab.Screen name="Clientes" component={CustomerTabs} />
         <Tab.Screen name="Produtos" component={ProductTabs} />
       </Tab.Navigator>
