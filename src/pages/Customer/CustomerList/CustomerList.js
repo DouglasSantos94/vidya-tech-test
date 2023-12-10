@@ -3,17 +3,12 @@ import {
   Button,
   Container,
   Header,
+  ListItemInfo,
   PageTitle,
   SearchBar,
+  TouchableListItem,
 } from "../../../components";
 import styled from "styled-components/native";
-
-const generateColor = (key) => {
-  const randomColor = Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, key);
-  return `#${randomColor}`;
-};
 
 function CustomerList({ navigation }) {
   const data = [
@@ -36,19 +31,18 @@ function CustomerList({ navigation }) {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <ListItemContainer
+          <TouchableListItem
             onPress={() => navigation.navigate("CustomerDetail")}
           >
-            <ListItemIcon key={item.key}>
-              <ListItemIconText>
-                {generateInitialLetters(item.title)}
-              </ListItemIconText>
-            </ListItemIcon>
+            <ListItemInfo
+              id={item.key}
+              letters={generateInitialLetters(item.title)}
+            />
             <Data>
               <DataTitle>{item.title}</DataTitle>
               <DataText>{item.description}</DataText>
             </Data>
-          </ListItemContainer>
+          </TouchableListItem>
         )}
         style={{ width: "90%", marginBottom: 30 }}
       />
@@ -59,42 +53,5 @@ function CustomerList({ navigation }) {
     </Container>
   );
 }
-
-const Data = styled(View)`
-  height: 33px;
-`;
-
-const DataText = styled(Text)`
-  font-size: 12px;
-  color: #71727a;
-  text-align: left;
-`;
-
-const DataTitle = styled(DataText)`
-  font-weight: bold;
-`;
-
-const ListItemContainer = styled(TouchableOpacity)`
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  height: 72px;
-`;
-
-const ListItemIcon = styled(View)`
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  background-color: ${(props) => generateColor(props.key)};
-  margin-right: 16px;
-`;
-
-const ListItemIconText = styled(Text)`
-  font-size: 20px;
-  color: white;
-  font-weight: bold;
-`;
 
 export { CustomerList };
