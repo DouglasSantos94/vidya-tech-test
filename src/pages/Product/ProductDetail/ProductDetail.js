@@ -1,7 +1,7 @@
 import { Image, StatusBar, Text, View } from "react-native";
 import { Inter_400Regular, Inter_900Black } from "@expo-google-fonts/inter";
 import { useFonts } from "expo-font";
-import { CloseIcon } from "../../../../components";
+import { CloseIcon } from "../../../components";
 
 function ProductDetail({ navigation }) {
   const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_900Black });
@@ -14,7 +14,7 @@ function ProductDetail({ navigation }) {
       <CloseIcon onPress={() => navigation.goBack()} />
       <View style={{ height: "50vh", width: "100%" }}>
         <Image
-          source={require("../../../../assets/product-photo-detail.png")}
+          source={require("../../../assets/product-photo-detail.png")}
           style={{ width: "100%" }}
         />
       </View>

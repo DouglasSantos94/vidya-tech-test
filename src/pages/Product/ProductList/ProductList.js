@@ -1,5 +1,5 @@
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
-import { Button, Container, SearchBar } from "../../../../components";
+import { Button, Container, SearchBar } from "../../../components";
 import styled from "styled-components";
 
 function ProductList({ navigation }) {
@@ -20,7 +20,7 @@ function ProductList({ navigation }) {
           <ProductItem onPress={() => navigation.navigate("ProductDetail")}>
             <ProductImageContainer>
               <Image
-                source={require("../../../../assets/product-without-image.png")}
+                source={require("../../../assets/product-without-image.png")}
                 style={{ borderTopLeftRadius: 16, borderTopRightRadius: 16 }}
               />
             </ProductImageContainer>
