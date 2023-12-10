@@ -1,9 +1,5 @@
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components/native";
-
-function Container({ children }) {
-  return <StyledContainer>{children}</StyledContainer>;
-}
 
 const StyledContainer = styled(View)`
   background-color: #ffffff;
@@ -12,4 +8,15 @@ const StyledContainer = styled(View)`
   align-items: center;
 `;
 
-export { Container };
+const ListItemContainer = styled(TouchableOpacity)`
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+`;
+
+function Container({ children }) {
+  return <StyledContainer>{children}</StyledContainer>;
+}
+
+export { Container, ListItemContainer };
