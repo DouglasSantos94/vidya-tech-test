@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
   CustomerData,
   CustomerDataTitle,
@@ -8,11 +9,15 @@ import { BackIcon, Container, Header, PageTitle } from "../../../components";
 
 function CustomerDetail({ route, navigation }) {
   const { id } = route.params;
+  const customer = useSelector((state) =>
+    state.customer.customers.find((customer) => customer.id == id)
+  );
+
   return (
     <Container>
       <Header>
         <BackIcon onPress={() => navigation.goBack()} />
-        <PageTitle pageTitleText="Nome do cliente" />
+        <PageTitle pageTitleText={customer.name} />
       </Header>
       <CustomerInfoContent>
         <CustomerData>
