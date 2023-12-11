@@ -16,6 +16,7 @@ import {
   ProductForm,
   ProductList,
   ProductDetail,
+  OrderList,
 } from "./src/pages";
 
 const CustomerStack = createStackNavigator();
@@ -77,7 +78,7 @@ function OrderTabs() {
     <OrderStack.Navigator>
       <OrderStack.Screen
         name="Orders"
-        component={CustomerList}
+        component={OrderList}
         options={{
           headerTitleAlign: "center",
           headerShadowVisible: false,
@@ -135,7 +136,7 @@ export default function App() {
           },
         })}
       >
-        {/* <Tab.Screen name="Pedidos" component={OrderTabs} /> */}
+        <Tab.Screen name="Pedidos" component={OrderTabs} />
         <Tab.Screen name="Clientes" component={CustomerTabs} />
         <Tab.Screen name="Produtos" component={ProductTabs} />
       </Tab.Navigator>

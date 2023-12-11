@@ -5,7 +5,7 @@ import {
   Header,
   Input,
   PageTitle,
-} from "../../../../components";
+} from "../../../components";
 import styled from "styled-components/native";
 import { Controller, useForm } from "react-hook-form";
 
