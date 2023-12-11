@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 const initialState = {
   customers: [
     {
+      id: "1",
       name: "Item 1",
       cnpj: "cnpj 1",
       phoneNumber: "11111",
@@ -15,6 +16,7 @@ const initialState = {
       number: 12,
     },
     {
+      id: "2",
       name: "Item 2",
       cnpj: "cnpj 2",
       phoneNumber: "11111",
@@ -26,6 +28,7 @@ const initialState = {
       number: 12,
     },
     {
+      id: "3",
       name: "Item 3",
       cnpj: "cnpj 3",
       phoneNumber: "11111",

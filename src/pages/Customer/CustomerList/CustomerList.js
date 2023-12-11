@@ -15,6 +15,7 @@ import {
 
 function CustomerList({ navigation }) {
   const customers = useSelector((state) => state.customer.customers);
+
   const generateInitialLetters = (str) => {
     const titleNames = str.split(" ");
 
@@ -30,7 +31,11 @@ function CustomerList({ navigation }) {
         data={customers}
         renderItem={({ item }) => (
           <TouchableListItem
-            onPress={() => navigation.navigate("CustomerDetail")}
+            onPress={() =>
+              navigation.navigate("CustomerDetail", {
+                id: item.id,
+              })
+            }
           >
             <ListItemInfo
               id={Date.now()}
