@@ -19,7 +19,7 @@ const customerSlice = createSlice({
           zipCode,
           customerState,
           city,
-          neighborHood,
+          neighborhood,
           street,
           number,
         },
@@ -33,7 +33,7 @@ const customerSlice = createSlice({
         zipCode,
         customerState,
         city,
-        neighborHood,
+        neighborhood,
         street,
         number,
       });
