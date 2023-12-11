@@ -3,6 +3,9 @@ import {
   Button,
   Container,
   Header,
+  Info,
+  InfoText,
+  InfoTitle,
   ListItemInfo,
   PageTitle,
   SearchBar,
@@ -38,10 +41,10 @@ function CustomerList({ navigation }) {
               id={item.key}
               letters={generateInitialLetters(item.title)}
             />
-            <Data>
-              <DataTitle>{item.title}</DataTitle>
-              <DataText>{item.description}</DataText>
-            </Data>
+            <Info>
+              <InfoTitle>{item.title}</InfoTitle>
+              <InfoText>{item.description}</InfoText>
+            </Info>
           </TouchableListItem>
         )}
         style={{ width: "90%", marginBottom: 30 }}
