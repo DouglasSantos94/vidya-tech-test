@@ -1,4 +1,5 @@
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Button,
   Container,
@@ -11,15 +12,9 @@ import {
   SearchBar,
   TouchableListItem,
 } from "../../../components";
-import styled from "styled-components/native";
 
 function CustomerList({ navigation }) {
-  const data = [
-    { key: "1", title: "Item 1", description: "description 1" },
-    { key: "2", title: "Item 2", description: "description 2" },
-    { key: "3", title: "Item 3", description: "description 3" },
-  ];
-
+  const customers = useSelector((state) => state.customer.customers);
   const generateInitialLetters = (str) => {
     const titleNames = str.split(" ");
 
@@ -32,18 +27,18 @@ function CustomerList({ navigation }) {
     <Container>
       <SearchBar />
       <FlatList
-        data={data}
+        data={customers}
         renderItem={({ item }) => (
           <TouchableListItem
             onPress={() => navigation.navigate("CustomerDetail")}
           >
             <ListItemInfo
-              id={item.key}
-              letters={generateInitialLetters(item.title)}
+              id={Date.now()}
+              letters={generateInitialLetters(item.name)}
             />
             <Info>
-              <InfoTitle>{item.title}</InfoTitle>
-              <InfoText>{item.description}</InfoText>
+              <InfoTitle>{item.name}</InfoTitle>
+              <InfoText>{item.cnpj}</InfoText>
             </Info>
           </TouchableListItem>
         )}
