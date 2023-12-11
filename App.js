@@ -12,7 +12,7 @@ import Icon from "@expo/vector-icons/MaterialIcons";
 import {
   CustomerForm,
   CustomerList,
-  CustomerView,
+  CustomerDetail,
   ProductForm,
   ProductList,
   ProductDetail,
@@ -42,7 +42,7 @@ function CustomerTabs() {
       />
       <CustomerStack.Screen
         name="CustomerDetail"
-        component={CustomerView}
+        component={CustomerDetail}
         options={{ headerShown: false, presentation: "modal" }}
       />
     </CustomerStack.Navigator>
@@ -92,7 +92,7 @@ function OrderTabs() {
       />
       <OrderStack.Screen
         name="OrderDetail"
-        component={CustomerView}
+        component={CustomerDetail}
         options={{ headerShown: false, presentation: "modal" }}
       />
     </OrderStack.Navigator>

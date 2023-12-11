@@ -3,10 +3,11 @@ import {
   CustomerDataTitle,
   CustomerDataText,
   CustomerInfoContent,
-} from "./CustomerView.styles";
+} from "./CustomerDetail.styles";
 import { BackIcon, Container, Header, PageTitle } from "../../../components";
 
-function CustomerView({ navigation }) {
+function CustomerDetail({ route, navigation }) {
+  const { id } = route.params;
   return (
     <Container>
       <Header>
@@ -51,4 +52,4 @@ function CustomerView({ navigation }) {
   );
 }
 
-export { CustomerView };
+export { CustomerDetail };
