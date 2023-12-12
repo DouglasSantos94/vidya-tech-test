@@ -1,4 +1,5 @@
 import { Controller } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
 import { CustomerFormContent } from "./CustomerForm.styles";
 import {
   Header,
@@ -10,6 +11,7 @@ import {
   ScrollContainer,
 } from "../../../components";
 import { useCustomerForm } from "../../../hooks/useCustomerForm";
+import { addCustomer } from "../../../store/customer/customerSlice";
 
 function CustomerForm({ navigation }) {
   const {
@@ -19,8 +21,9 @@ function CustomerForm({ navigation }) {
     focusedField,
     setFocusedField,
   } = useCustomerForm();
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => dispatch(addCustomer(data));
   return (
     <ScrollContainer contentContainerStyle={{ alignItems: "center" }}>
       <Header>
