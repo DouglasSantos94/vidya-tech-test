@@ -1,3 +1,4 @@
+export { ErrorMessage } from "./ErrorMessage/ErrorMessage";
 export * from "./Icon/Icon";
 export { Container } from "./Container/Container";
 export { Button } from "./Button/Button";

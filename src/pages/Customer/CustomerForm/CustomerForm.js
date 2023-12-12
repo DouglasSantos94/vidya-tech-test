@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { ScrollView, Text } from "react-native";
 import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Container,
   Header,
@@ -7,8 +9,10 @@ import {
   PageTitle,
   Button,
   BackIcon,
+  ErrorMessage,
 } from "../../../components";
 import { CustomerFormContent } from "./CustomerForm.styles";
+import { customerFormSchema } from "../../../schema/customerFormSchema";
 
 function CustomerForm({ navigation }) {
   const {
@@ -26,14 +30,16 @@ function CustomerForm({ navigation }) {
       customerNeighborhood: "",
       customerStreet: "",
       customerNumber: "",
+      customerComplement: "",
     },
+    resolver: yupResolver(customerFormSchema),
   });
 
   const [focusedField, setFocusedField] = useState("");
 
   const onSubmit = (data) => console.log(data);
   return (
-    <Container>
+    <ScrollView contentContainerStyle={{ alignItems: "center", marginTop: 10 }}>
       <Header>
         <BackIcon onPress={() => navigation.goBack()} />
         <PageTitle pageTitleText="Cadastro de clientes" />
@@ -54,6 +60,9 @@ function CustomerForm({ navigation }) {
           )}
           name="customerName"
         />
+        {errors.customerName && (
+          <ErrorMessage>{errors.customerName.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -69,6 +78,9 @@ function CustomerForm({ navigation }) {
           )}
           name="customerCnpj"
         />
+        {errors.customerCnpj && (
+          <ErrorMessage>{errors.customerCnpj.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -84,6 +96,9 @@ function CustomerForm({ navigation }) {
           )}
           name="customerPhoneNumber"
         />
+        {errors.customerPhoneNumber && (
+          <ErrorMessage>{errors.customerPhoneNumber.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -99,6 +114,9 @@ function CustomerForm({ navigation }) {
           )}
           name="customerZipCode"
         />
+        {errors.customerZipCode && (
+          <ErrorMessage>{errors.customerZipCode.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -114,6 +132,9 @@ function CustomerForm({ navigation }) {
           )}
           name="customerState"
         />
+        {errors.customerState && (
+          <ErrorMessage>{errors.customerState.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -129,6 +150,9 @@ function CustomerForm({ navigation }) {
           )}
           name="customerCity"
         />
+        {errors.customerCity && (
+          <ErrorMessage>{errors.customerCity.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -144,6 +168,9 @@ function CustomerForm({ navigation }) {
           )}
           name="customerNeighborhood"
         />
+        {errors.customerNeighborhood && (
+          <ErrorMessage>{errors.customerNeighborhood.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -159,6 +186,9 @@ function CustomerForm({ navigation }) {
           )}
           name="customerStreet"
         />
+        {errors.customerStreet && (
+          <ErrorMessage>{errors.customerStreet.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -174,9 +204,26 @@ function CustomerForm({ navigation }) {
           )}
           name="customerNumber"
         />
-        <Button onPress={handleSubmit(onSubmit)} />
+        {errors.customerNumber && (
+          <ErrorMessage>{errors.customerNumber.message}</ErrorMessage>
+        )}
+        <Controller
+          control={control}
+          render={({ field: { onChange, value, name } }) => (
+            <Input
+              labelText="Complemento"
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="customerComplement"
+        />
+        <Button onPress={handleSubmit(onSubmit)} text="Salvar cliente" />
       </CustomerFormContent>
-    </Container>
+    </ScrollView>
   );
 }
 
