@@ -21,7 +21,7 @@ const generateInitialLetters = (str) => {
   }`.toUpperCase();
 };
 
-function OrderList() {
+function OrderList({ navigation }) {
   const data = [
     { key: "1", title: "Item 1", price: 20, productQuantity: 7 },
     { key: "2", title: "Item 2", price: 30, productQuantity: 7 },

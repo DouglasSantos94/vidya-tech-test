@@ -1,5 +1,6 @@
 import "react-native-gesture-handler";
 import { View, StatusBar } from "react-native";
+import { Provider } from "react-redux";
 import styled from "styled-components/native";
 import {
   NavigationContainer,
@@ -8,16 +9,16 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "@expo/vector-icons/MaterialIcons";
-
 import {
   CustomerForm,
   CustomerList,
-  CustomerView,
+  CustomerDetail,
   ProductForm,
   ProductList,
   ProductDetail,
   OrderList,
 } from "./src/pages";
+import store from "./src/store/store";
 
 const CustomerStack = createStackNavigator();
 const ProductStack = createStackNavigator();
@@ -41,7 +42,7 @@ function CustomerTabs() {
       />
       <CustomerStack.Screen
         name="CustomerDetail"
-        component={CustomerView}
+        component={CustomerDetail}
         options={{ headerShown: false, presentation: "modal" }}
       />
     </CustomerStack.Navigator>
@@ -91,7 +92,7 @@ function OrderTabs() {
       />
       <OrderStack.Screen
         name="OrderDetail"
-        component={CustomerView}
+        component={CustomerDetail}
         options={{ headerShown: false, presentation: "modal" }}
       />
     </OrderStack.Navigator>
@@ -108,7 +109,7 @@ const generateDisplay = (route) => {
   return display;
 };
 
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <StatusBar
@@ -149,3 +150,11 @@ const AppContainer = styled(View)`
   align-items: center;
   justify-content: center;
 `;
+
+export default () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};

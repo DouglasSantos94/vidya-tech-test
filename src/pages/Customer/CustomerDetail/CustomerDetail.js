@@ -1,54 +1,60 @@
+import { useSelector } from "react-redux";
 import {
   CustomerData,
   CustomerDataTitle,
   CustomerDataText,
   CustomerInfoContent,
-} from "./CustomerView.styles";
+} from "./CustomerDetail.styles";
 import { BackIcon, Container, Header, PageTitle } from "../../../components";
 
-function CustomerView({ navigation }) {
+function CustomerDetail({ route, navigation }) {
+  const { id } = route.params;
+  const customer = useSelector((state) =>
+    state.customer.customers.find((customer) => customer.id == id)
+  );
+
   return (
     <Container>
       <Header>
         <BackIcon onPress={() => navigation.goBack()} />
-        <PageTitle pageTitleText="Nome do cliente" />
+        <PageTitle pageTitleText={customer.name} />
       </Header>
       <CustomerInfoContent>
         <CustomerData>
           <CustomerDataTitle>CNPJ</CustomerDataTitle>
-          <CustomerDataText>00000000</CustomerDataText>
+          <CustomerDataText>{customer.cnpj}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Telefone</CustomerDataTitle>
-          <CustomerDataText>949521984</CustomerDataText>
+          <CustomerDataText>{customer.phoneNumber}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>CEP</CustomerDataTitle>
-          <CustomerDataText>987651</CustomerDataText>
+          <CustomerDataText>{customer.zipCode}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Estado</CustomerDataTitle>
-          <CustomerDataText>SC</CustomerDataText>
+          <CustomerDataText>{customer.customerState}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Cidade</CustomerDataTitle>
-          <CustomerDataText>Gabir</CustomerDataText>
+          <CustomerDataText>{customer.city}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Bairro</CustomerDataTitle>
-          <CustomerDataText>Tapera</CustomerDataText>
+          <CustomerDataText>{customer.neighborhood}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Endereço</CustomerDataTitle>
-          <CustomerDataText>Rua 2</CustomerDataText>
+          <CustomerDataText>{customer.street}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Número</CustomerDataTitle>
-          <CustomerDataText>dasds</CustomerDataText>
+          <CustomerDataText>{customer.number}</CustomerDataText>
         </CustomerData>
       </CustomerInfoContent>
     </Container>
   );
 }
 
-export { CustomerView };
+export { CustomerDetail };

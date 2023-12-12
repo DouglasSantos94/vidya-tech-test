@@ -1,9 +1,15 @@
 import { Image, StatusBar, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 import { Inter_400Regular, Inter_900Black } from "@expo-google-fonts/inter";
 import { useFonts } from "expo-font";
 import { CloseIcon } from "../../../components";
 
-function ProductDetail({ navigation }) {
+function ProductDetail({ navigation, route }) {
+  const { id } = route.params;
+  const product = useSelector((state) =>
+    state.customer.customers.find((customer) => customer.id == id)
+  );
+
   const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_900Black });
   if (!fontsLoaded) {
     return <Text>Loading...</Text>;
@@ -33,10 +39,10 @@ function ProductDetail({ navigation }) {
                 fontFamily: "Inter_900Black",
               }}
             >
-              Produto
+              {product.name}
             </Text>
             <Text style={{ fontSize: 14, fontFamily: "Inter_400Regular" }}>
-              R$ 23.99
+              R$ {product.price}
             </Text>
           </View>
           <View style={{ width: "100%" }}>
@@ -47,15 +53,7 @@ function ProductDetail({ navigation }) {
                 fontFamily: "Inter_400Regular",
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut
-              diam sed metus commodo egestas. Nam pellentesque neque tortor.
-              Donec nunc nunc, tempus eu luctus at, semper a magna. Pellentesque
-              auctor accumsan sem id eleifend. Pellentesque venenatis nunc vel
-              eros mollis tristique. Nam et erat tristique velit scelerisque
-              rhoncus. Donec bibendum, elit in viverra blandit, enim velit
-              pharetra ex, id lacinia justo elit eu velit. Integer porta auctor
-              quam dapibus varius. Etiam scelerisque ullamcorper risus at
-              pretium.
+              {product.description}
             </Text>
           </View>
         </View>
