@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Controller } from "react-hook-form";
+import { CustomerFormContent } from "./CustomerForm.styles";
 import {
-  Container,
   Header,
   Input,
   PageTitle,
@@ -11,31 +9,16 @@ import {
   ErrorMessage,
   ScrollContainer,
 } from "../../../components";
-import { CustomerFormContent } from "./CustomerForm.styles";
-import { customerFormSchema } from "../../../schema/customerFormSchema";
+import { useCustomerForm } from "../../../hooks/useCustomerForm";
 
 function CustomerForm({ navigation }) {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      customerName: "",
-      customerCnpj: "",
-      customerPhoneNumber: "",
-      customerZipCode: "",
-      customerState: "",
-      customerCity: "",
-      customerNeighborhood: "",
-      customerStreet: "",
-      customerNumber: "",
-      customerComplement: "",
-    },
-    resolver: yupResolver(customerFormSchema),
-  });
-
-  const [focusedField, setFocusedField] = useState("");
+    focusedField,
+    setFocusedField,
+  } = useCustomerForm();
 
   const onSubmit = (data) => console.log(data);
   return (
