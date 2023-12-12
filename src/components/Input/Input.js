@@ -4,6 +4,8 @@ import { InputWithLabel } from "./Input.styles";
 
 function Input({
   labelText,
+  onFocus,
+  focused,
   onBlur,
   onChangeText,
   value,
@@ -14,6 +16,8 @@ function Input({
       <InputLabel labeltext={labelText} />
       <InputText
         keyboardType={keyboardType}
+        onFocus={onFocus}
+        focused={focused}
         onBlur={onBlur}
         onChangeText={onChangeText}
         value={value}
