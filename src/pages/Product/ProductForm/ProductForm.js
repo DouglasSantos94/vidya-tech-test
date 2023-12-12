@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { Controller, useForm } from "react-hook-form";
+import styled from "styled-components/native";
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
   BackIcon,
+  Button,
   Container,
+  ErrorMessage,
   Header,
   Input,
   PageTitle,
 } from "../../../components";
-import styled from "styled-components/native";
+import { productFormSchema } from "../../../schema/productFormSchema";
 
 function ProductForm({ navigation }) {
   const {
@@ -22,9 +26,12 @@ function ProductForm({ navigation }) {
       productDescription: "",
       productImage: "",
     },
+    resolver: yupResolver(productFormSchema),
   });
 
   const [focusedField, setFocusedField] = useState("");
+
+  const onSubmit = (data) => console.log(data);
 
   return (
     <Container>
@@ -41,12 +48,16 @@ function ProductForm({ navigation }) {
               labelText="Nome"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
+              hasError={errors[name]}
               focused={focusedField === name}
               value={value}
             />
           )}
           name="productName"
         />
+        {errors.productName && (
+          <ErrorMessage>{errors.productName.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -56,12 +67,16 @@ function ProductForm({ navigation }) {
               keyboardType="decimal-pad"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
+              hasError={errors[name]}
               focused={focusedField === name}
               value={value}
             />
           )}
           name="productPrice"
         />
+        {errors.productPrice && (
+          <ErrorMessage>{errors.productPrice.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
@@ -70,14 +85,18 @@ function ProductForm({ navigation }) {
               labelText="Descrição"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
+              hasError={errors[name]}
               focused={focusedField === name}
               value={value}
             />
           )}
           name="productDescription"
         />
-
+        {errors.productDescription && (
+          <ErrorMessage>{errors.productDescription.message}</ErrorMessage>
+        )}
         <ImageUploaderContainer></ImageUploaderContainer>
+        <Button onPress={handleSubmit(onSubmit)} text="Salvar produto" />
       </ProductFormContent>
     </Container>
   );
