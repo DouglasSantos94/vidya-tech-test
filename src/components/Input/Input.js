@@ -8,6 +8,7 @@ function Input({
   focused,
   onBlur,
   onChangeText,
+  hasError,
   value,
   keyboardType = "default",
 }) {
@@ -20,6 +21,7 @@ function Input({
         focused={focused}
         onBlur={onBlur}
         onChangeText={onChangeText}
+        hasError={hasError}
         value={value}
       />
     </InputWithLabel>

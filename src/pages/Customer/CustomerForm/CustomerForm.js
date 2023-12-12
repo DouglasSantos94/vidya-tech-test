@@ -55,6 +55,7 @@ function CustomerForm({ navigation }) {
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
               focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
@@ -73,6 +74,7 @@ function CustomerForm({ navigation }) {
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
               focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
@@ -91,6 +93,7 @@ function CustomerForm({ navigation }) {
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
               focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
@@ -109,6 +112,7 @@ function CustomerForm({ navigation }) {
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
               focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
@@ -127,6 +131,7 @@ function CustomerForm({ navigation }) {
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
               focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
@@ -145,6 +150,7 @@ function CustomerForm({ navigation }) {
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
               focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
@@ -163,6 +169,7 @@ function CustomerForm({ navigation }) {
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
               focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
@@ -181,6 +188,7 @@ function CustomerForm({ navigation }) {
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
               focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
@@ -198,8 +206,9 @@ function CustomerForm({ navigation }) {
               labelText="Número"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
-              focused={focusedField === name}
               onChangeText={onChange}
+              focused={focusedField === name}
+              hasError={errors[name]}
               value={value}
             />
           )}
@@ -216,6 +225,7 @@ function CustomerForm({ navigation }) {
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
               focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
