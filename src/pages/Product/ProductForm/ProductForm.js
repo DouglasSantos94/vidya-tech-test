@@ -1,4 +1,6 @@
-import { Text, TextInput, View } from "react-native";
+import { useState } from "react";
+import { View } from "react-native";
+import { Controller, useForm } from "react-hook-form";
 import {
   BackIcon,
   Container,
@@ -7,7 +9,6 @@ import {
   PageTitle,
 } from "../../../components";
 import styled from "styled-components/native";
-import { Controller, useForm } from "react-hook-form";
 
 function ProductForm({ navigation }) {
   const {
@@ -22,6 +23,9 @@ function ProductForm({ navigation }) {
       productImage: "",
     },
   });
+
+  const [focusedField, setFocusedField] = useState("");
+
   return (
     <Container>
       <Header>
@@ -32,11 +36,12 @@ function ProductForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Nome"
-              onBlur={onBlur}
-              onChangeText={onChange}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
               value={value}
             />
           )}
@@ -45,12 +50,13 @@ function ProductForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Preço"
               keyboardType="decimal-pad"
-              onBlur={onBlur}
-              onChangeText={onChange}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
               value={value}
             />
           )}
@@ -59,11 +65,12 @@ function ProductForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Descrição"
-              onBlur={onBlur}
-              onChangeText={onChange}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
               value={value}
             />
           )}
