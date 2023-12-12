@@ -10,6 +10,7 @@ import {
   Button,
   BackIcon,
   ErrorMessage,
+  ScrollContainer,
 } from "../../../components";
 import { CustomerFormContent } from "./CustomerForm.styles";
 import { customerFormSchema } from "../../../schema/customerFormSchema";
@@ -39,7 +40,7 @@ function CustomerForm({ navigation }) {
 
   const onSubmit = (data) => console.log(data);
   return (
-    <ScrollView contentContainerStyle={{ alignItems: "center", marginTop: 10 }}>
+    <ScrollContainer contentContainerStyle={{ alignItems: "center" }}>
       <Header>
         <BackIcon onPress={() => navigation.goBack()} />
         <PageTitle pageTitleText="Cadastro de clientes" />
@@ -223,7 +224,7 @@ function CustomerForm({ navigation }) {
         />
         <Button onPress={handleSubmit(onSubmit)} text="Salvar cliente" />
       </CustomerFormContent>
-    </ScrollView>
+    </ScrollContainer>
   );
 }
 
