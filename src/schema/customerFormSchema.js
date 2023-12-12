@@ -17,11 +17,11 @@ export const customerFormSchema = Yup.object().shape({
     .required("CNPJ é obrigatório"),
   customerPhoneNumber: Yup.string()
     .min(10, "Telefone inválido!")
-    .max(11, "Telefone inválido!")
+    .max(15, "Telefone inválido!")
     .required("Telefone é obrigatório"),
   customerZipCode: Yup.string()
-    .min(8, "CEP deve ter 8 caracteres!")
-    .max(8, "CEP deve ter 8 caracteres!")
+    .min(9, "CEP deve ter 9 caracteres!")
+    .max(9, "CEP deve ter 9 caracteres!")
     .required("Digite o seu CEP"),
   customerState: Yup.string().required("Selecione o estado"),
   customerCity: Yup.string().required("Digite a cidade"),
