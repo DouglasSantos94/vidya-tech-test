@@ -76,6 +76,7 @@ function CustomerForm({ navigation }) {
               hasError={errors[name]}
               onChangeText={onChange}
               value={value}
+              keyboardType="numeric"
             />
           )}
           name="customerCnpj"
@@ -85,7 +86,7 @@ function CustomerForm({ navigation }) {
         )}
         <Controller
           control={control}
-          rules={{ required: true }}
+          rules={{ required: true, minLength: 10, maxLength: 11 }}
           render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Telefone"
@@ -95,6 +96,7 @@ function CustomerForm({ navigation }) {
               hasError={errors[name]}
               onChangeText={onChange}
               value={value}
+              keyboardType="phone-pad"
             />
           )}
           name="customerPhoneNumber"
@@ -113,6 +115,7 @@ function CustomerForm({ navigation }) {
               focused={focusedField === name}
               hasError={errors[name]}
               onChangeText={onChange}
+              keyboardType="numeric"
               value={value}
             />
           )}
@@ -209,6 +212,7 @@ function CustomerForm({ navigation }) {
               focused={focusedField === name}
               hasError={errors[name]}
               value={value}
+              keyboardType="numeric"
             />
           )}
           name="customerNumber"
