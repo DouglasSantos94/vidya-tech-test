@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
   Container,
@@ -28,6 +29,8 @@ function CustomerForm({ navigation }) {
     },
   });
 
+  const [focusedField, setFocusedField] = useState("");
+
   const onSubmit = (data) => console.log(data);
   return (
     <Container>
@@ -39,10 +42,12 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Nome"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              isFocused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -52,10 +57,12 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="CNPJ"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -65,10 +72,12 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Telefone"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              isFocused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -78,10 +87,12 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="CEP"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              isFocused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -91,10 +102,12 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Estado"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              isFocused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -104,10 +117,12 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Cidade"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              isFocused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -117,10 +132,12 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Bairro"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              isFocused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -130,10 +147,12 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Endereço"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              isFocused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -143,10 +162,12 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Número"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              isFocused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
