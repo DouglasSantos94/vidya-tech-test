@@ -17,20 +17,20 @@ function CustomerDetail({ route, navigation }) {
     <Container>
       <Header>
         <BackIcon onPress={() => navigation.goBack()} />
-        <PageTitle pageTitleText={customer.name} />
+        <PageTitle pageTitleText={customer.customerName} />
       </Header>
       <CustomerInfoContent>
         <CustomerData>
           <CustomerDataTitle>CNPJ</CustomerDataTitle>
-          <CustomerDataText>{customer.cnpj}</CustomerDataText>
+          <CustomerDataText>{customer.customerCnpj}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Telefone</CustomerDataTitle>
-          <CustomerDataText>{customer.phoneNumber}</CustomerDataText>
+          <CustomerDataText>{customer.customerPhoneNumber}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>CEP</CustomerDataTitle>
-          <CustomerDataText>{customer.zipCode}</CustomerDataText>
+          <CustomerDataText>{customer.customerZipCode}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Estado</CustomerDataTitle>
@@ -38,19 +38,23 @@ function CustomerDetail({ route, navigation }) {
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Cidade</CustomerDataTitle>
-          <CustomerDataText>{customer.city}</CustomerDataText>
+          <CustomerDataText>{customer.customerCity}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Bairro</CustomerDataTitle>
-          <CustomerDataText>{customer.neighborhood}</CustomerDataText>
+          <CustomerDataText>{customer.customerNeighborhood}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Endereço</CustomerDataTitle>
-          <CustomerDataText>{customer.street}</CustomerDataText>
+          <CustomerDataText>{customer.customerStreet}</CustomerDataText>
         </CustomerData>
         <CustomerData>
           <CustomerDataTitle>Número</CustomerDataTitle>
-          <CustomerDataText>{customer.number}</CustomerDataText>
+          <CustomerDataText>{customer.customerNumber}</CustomerDataText>
+        </CustomerData>
+        <CustomerData>
+          <CustomerDataTitle>Complemento</CustomerDataTitle>
+          <CustomerDataText>{customer.customerComplement}</CustomerDataText>
         </CustomerData>
       </CustomerInfoContent>
     </Container>
