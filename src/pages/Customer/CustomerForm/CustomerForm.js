@@ -47,7 +47,7 @@ function CustomerForm({ navigation }) {
               labelText="Nome"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
-              isFocused={focusedField === name}
+              focused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -77,7 +77,7 @@ function CustomerForm({ navigation }) {
               labelText="Telefone"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
-              isFocused={focusedField === name}
+              focused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -92,7 +92,7 @@ function CustomerForm({ navigation }) {
               labelText="CEP"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
-              isFocused={focusedField === name}
+              focused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -107,7 +107,7 @@ function CustomerForm({ navigation }) {
               labelText="Estado"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
-              isFocused={focusedField === name}
+              focused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -122,7 +122,7 @@ function CustomerForm({ navigation }) {
               labelText="Cidade"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
-              isFocused={focusedField === name}
+              focused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -137,7 +137,7 @@ function CustomerForm({ navigation }) {
               labelText="Bairro"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
-              isFocused={focusedField === name}
+              focused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -152,7 +152,7 @@ function CustomerForm({ navigation }) {
               labelText="Endereço"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
-              isFocused={focusedField === name}
+              focused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
@@ -167,7 +167,7 @@ function CustomerForm({ navigation }) {
               labelText="Número"
               onBlur={() => setFocusedField("")}
               onFocus={() => setFocusedField(name)}
-              isFocused={focusedField === name}
+              focused={focusedField === name}
               onChangeText={onChange}
               value={value}
             />
