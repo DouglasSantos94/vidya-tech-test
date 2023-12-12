@@ -1,36 +1,31 @@
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
+import { CustomerFormContent } from "./CustomerForm.styles";
 import {
-  Container,
   Header,
   Input,
   PageTitle,
   Button,
   BackIcon,
+  ErrorMessage,
+  ScrollContainer,
 } from "../../../components";
-import { CustomerFormContent } from "./CustomerForm.styles";
+import { useCustomerForm } from "../../../hooks/useCustomerForm";
+import { addCustomer } from "../../../store/customer/customerSlice";
 
 function CustomerForm({ navigation }) {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      customerName: "",
-      customerCnpj: "",
-      customerPhoneNumber: "",
-      customerZipCode: "",
-      customerState: "",
-      customerCity: "",
-      customerNeighborhood: "",
-      customerStreet: "",
-      customerNumber: "",
-    },
-  });
+    focusedField,
+    setFocusedField,
+  } = useCustomerForm();
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => dispatch(addCustomer(data));
   return (
-    <Container>
+    <ScrollContainer contentContainerStyle={{ alignItems: "center" }}>
       <Header>
         <BackIcon onPress={() => navigation.goBack()} />
         <PageTitle pageTitleText="Cadastro de clientes" />
@@ -39,123 +34,199 @@ function CustomerForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Nome"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
           )}
           name="customerName"
         />
+        {errors.customerName && (
+          <ErrorMessage>{errors.customerName.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="CNPJ"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
+              maxLength={18}
+              keyboardType="numeric"
             />
           )}
           name="customerCnpj"
         />
+        {errors.customerCnpj && (
+          <ErrorMessage>{errors.customerCnpj.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
-          rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          rules={{ required: true, minLength: 10, maxLength: 11 }}
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Telefone"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
+              maxLength={15}
+              keyboardType="phone-pad"
             />
           )}
           name="customerPhoneNumber"
         />
+        {errors.customerPhoneNumber && (
+          <ErrorMessage>{errors.customerPhoneNumber.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="CEP"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
+              maxLength={9}
+              keyboardType="numeric"
             />
           )}
           name="customerZipCode"
         />
+        {errors.customerZipCode && (
+          <ErrorMessage>{errors.customerZipCode.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Estado"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
           )}
           name="customerState"
         />
+        {errors.customerState && (
+          <ErrorMessage>{errors.customerState.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Cidade"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
           )}
           name="customerCity"
         />
+        {errors.customerCity && (
+          <ErrorMessage>{errors.customerCity.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Bairro"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
           )}
           name="customerNeighborhood"
         />
+        {errors.customerNeighborhood && (
+          <ErrorMessage>{errors.customerNeighborhood.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Endereço"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              hasError={errors[name]}
               onChangeText={onChange}
               value={value}
             />
           )}
           name="customerStreet"
         />
+        {errors.customerStreet && (
+          <ErrorMessage>{errors.customerStreet.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Número"
-              onBlur={onBlur}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
               onChangeText={onChange}
+              focused={focusedField === name}
+              hasError={errors[name]}
               value={value}
+              keyboardType="numeric"
             />
           )}
           name="customerNumber"
         />
-        <Button onPress={handleSubmit(onSubmit)} />
+        {errors.customerNumber && (
+          <ErrorMessage>{errors.customerNumber.message}</ErrorMessage>
+        )}
+        <Controller
+          control={control}
+          render={({ field: { onChange, value, name } }) => (
+            <Input
+              labelText="Complemento"
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              focused={focusedField === name}
+              hasError={errors[name]}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="customerComplement"
+        />
+        <Button onPress={handleSubmit(onSubmit)} text="Salvar cliente" />
       </CustomerFormContent>
-    </Container>
+    </ScrollContainer>
   );
 }
 

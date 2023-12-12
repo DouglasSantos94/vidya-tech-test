@@ -1,13 +1,18 @@
-import { Text, TextInput, View } from "react-native";
+import { useState } from "react";
+import { View } from "react-native";
+import { Controller, useForm } from "react-hook-form";
+import styled from "styled-components/native";
+import { yupResolver } from "@hookform/resolvers/yup";
 import {
   BackIcon,
+  Button,
   Container,
+  ErrorMessage,
   Header,
   Input,
   PageTitle,
 } from "../../../components";
-import styled from "styled-components/native";
-import { Controller, useForm } from "react-hook-form";
+import { productFormSchema } from "../../../schema/productFormSchema";
 
 function ProductForm({ navigation }) {
   const {
@@ -21,7 +26,13 @@ function ProductForm({ navigation }) {
       productDescription: "",
       productImage: "",
     },
+    resolver: yupResolver(productFormSchema),
   });
+
+  const [focusedField, setFocusedField] = useState("");
+
+  const onSubmit = (data) => console.log(data);
+
   return (
     <Container>
       <Header>
@@ -32,45 +43,60 @@ function ProductForm({ navigation }) {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Nome"
-              onBlur={onBlur}
-              onChangeText={onChange}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              hasError={errors[name]}
+              focused={focusedField === name}
               value={value}
             />
           )}
           name="productName"
         />
+        {errors.productName && (
+          <ErrorMessage>{errors.productName.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Preço"
               keyboardType="decimal-pad"
-              onBlur={onBlur}
-              onChangeText={onChange}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              hasError={errors[name]}
+              focused={focusedField === name}
               value={value}
             />
           )}
           name="productPrice"
         />
+        {errors.productPrice && (
+          <ErrorMessage>{errors.productPrice.message}</ErrorMessage>
+        )}
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value, name } }) => (
             <Input
               labelText="Descrição"
-              onBlur={onBlur}
-              onChangeText={onChange}
+              onBlur={() => setFocusedField("")}
+              onFocus={() => setFocusedField(name)}
+              hasError={errors[name]}
+              focused={focusedField === name}
               value={value}
             />
           )}
           name="productDescription"
         />
-
+        {errors.productDescription && (
+          <ErrorMessage>{errors.productDescription.message}</ErrorMessage>
+        )}
         <ImageUploaderContainer></ImageUploaderContainer>
+        <Button onPress={handleSubmit(onSubmit)} text="Salvar produto" />
       </ProductFormContent>
     </Container>
   );

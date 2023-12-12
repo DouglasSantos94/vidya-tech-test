@@ -4,9 +4,13 @@ import { InputWithLabel } from "./Input.styles";
 
 function Input({
   labelText,
+  onFocus,
+  focused,
   onBlur,
   onChangeText,
+  hasError,
   value,
+  maxLength,
   keyboardType = "default",
 }) {
   return (
@@ -14,8 +18,12 @@ function Input({
       <InputLabel labeltext={labelText} />
       <InputText
         keyboardType={keyboardType}
+        onFocus={onFocus}
+        focused={focused}
         onBlur={onBlur}
         onChangeText={onChangeText}
+        hasError={hasError}
+        maxLength={maxLength}
         value={value}
       />
     </InputWithLabel>

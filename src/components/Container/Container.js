@@ -1,4 +1,4 @@
-import { TouchableOpacity, View } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import styled from "styled-components/native";
 
 const StyledContainer = styled(View)`
@@ -15,8 +15,12 @@ const ListItemContainer = styled(TouchableOpacity)`
   height: 72px;
 `;
 
+const ScrollContainer = styled(ScrollView)`
+  background-color: white;
+`;
+
 function Container({ children }) {
   return <StyledContainer>{children}</StyledContainer>;
 }
 
-export { Container, ListItemContainer };
+export { Container, ListItemContainer, ScrollContainer };

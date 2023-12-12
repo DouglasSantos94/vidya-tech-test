@@ -18,10 +18,11 @@ function CustomerList({ navigation }) {
 
   const generateInitialLetters = (str) => {
     const titleNames = str.split(" ");
+    const initialLetters = titleNames[0].charAt(0);
 
-    return `${titleNames[0].charAt(0)}${
-      titleNames.length > 1 && titleNames[1].charAt(0)
-    }`.toUpperCase();
+    if (titleNames.length > 1) initialLetters += titleNames[1].charAt(0);
+
+    return initialLetters.toUpperCase();
   };
 
   return (
@@ -39,11 +40,11 @@ function CustomerList({ navigation }) {
           >
             <ListItemInfo
               id={Date.now()}
-              letters={generateInitialLetters(item.name)}
+              letters={generateInitialLetters(item.customerName)}
             />
             <Info>
-              <InfoTitle>{item.name}</InfoTitle>
-              <InfoText>{item.cnpj}</InfoText>
+              <InfoTitle>{item.customerName}</InfoTitle>
+              <InfoText>{item.customerCnpj}</InfoText>
             </Info>
           </TouchableListItem>
         )}
