@@ -10,6 +10,7 @@ function Input({
   onChangeText,
   hasError,
   value,
+  maxLength,
   keyboardType = "default",
 }) {
   return (
@@ -22,6 +23,7 @@ function Input({
         onBlur={onBlur}
         onChangeText={onChangeText}
         hasError={hasError}
+        maxLength={maxLength}
         value={value}
       />
     </InputWithLabel>

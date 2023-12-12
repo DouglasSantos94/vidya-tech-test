@@ -59,6 +59,7 @@ function CustomerForm({ navigation }) {
               hasError={errors[name]}
               onChangeText={onChange}
               value={value}
+              maxLength={18}
               keyboardType="numeric"
             />
           )}
@@ -79,6 +80,7 @@ function CustomerForm({ navigation }) {
               hasError={errors[name]}
               onChangeText={onChange}
               value={value}
+              maxLength={15}
               keyboardType="phone-pad"
             />
           )}
@@ -98,8 +100,9 @@ function CustomerForm({ navigation }) {
               focused={focusedField === name}
               hasError={errors[name]}
               onChangeText={onChange}
-              keyboardType="numeric"
               value={value}
+              maxLength={9}
+              keyboardType="numeric"
             />
           )}
           name="customerZipCode"
