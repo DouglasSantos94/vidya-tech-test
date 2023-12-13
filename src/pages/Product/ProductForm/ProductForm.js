@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Controller, useForm } from "react-hook-form";
 import styled from "styled-components/native";
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as ImagePicker from "expo-image-picker";
 import {
   BackIcon,
   Button,
@@ -13,6 +14,9 @@ import {
   PageTitle,
 } from "../../../components";
 import { productFormSchema } from "../../../schema/productFormSchema";
+import { InputLabel } from "../../../components/Input/InputLabel/InputLabel";
+import { addProduct } from "../../../store/product/productSlice";
+import { useDispatch } from "react-redux";
 
 function ProductForm({ navigation }) {
   const {
@@ -30,8 +34,25 @@ function ProductForm({ navigation }) {
   });
 
   const [focusedField, setFocusedField] = useState("");
+  const [image, setImage] = useState("");
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => console.log(data);
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
+  const onSubmit = (data) => {
+    dispatch(addProduct({ ...data, productImage: image }));
+  };
 
   return (
     <Container>
@@ -50,6 +71,7 @@ function ProductForm({ navigation }) {
               onFocus={() => setFocusedField(name)}
               hasError={errors[name]}
               focused={focusedField === name}
+              onChangeText={onChange}
               value={value}
             />
           )}
@@ -69,6 +91,7 @@ function ProductForm({ navigation }) {
               onFocus={() => setFocusedField(name)}
               hasError={errors[name]}
               focused={focusedField === name}
+              onChangeText={onChange}
               value={value}
             />
           )}
@@ -87,6 +110,7 @@ function ProductForm({ navigation }) {
               onFocus={() => setFocusedField(name)}
               hasError={errors[name]}
               focused={focusedField === name}
+              onChangeText={onChange}
               value={value}
             />
           )}
@@ -95,7 +119,15 @@ function ProductForm({ navigation }) {
         {errors.productDescription && (
           <ErrorMessage>{errors.productDescription.message}</ErrorMessage>
         )}
-        <ImageUploaderContainer></ImageUploaderContainer>
+        <InputLabel labeltext="Foto do produto" />
+        <ImageUploaderContainer>
+          <ImageUploaderButton onPress={pickImage}>
+            <Image source={require("../../../assets/image-upload.png")} />
+            <Text style={{ color: "white", fontWeight: "bold" }}>
+              Faça o upload da foto
+            </Text>
+          </ImageUploaderButton>
+        </ImageUploaderContainer>
         <Button onPress={handleSubmit(onSubmit)} text="Salvar produto" />
       </ProductFormContent>
     </Container>
@@ -105,8 +137,22 @@ function ProductForm({ navigation }) {
 const ImageUploaderContainer = styled(View)`
   width: 85%;
   height: 129.01px;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
   border: dashed 5px #c5c6cc;
+  box-sizing: border-box;
+`;
+
+const ImageUploaderButton = styled(TouchableOpacity)`
+  width: 183.291px;
+  height: 29.159px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  background-color: #006ffd;
+  padding: 0 10px;
 `;
 
 const ProductFormContent = styled(View)`

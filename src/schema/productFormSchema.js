@@ -6,4 +6,5 @@ export const productFormSchema = Yup.object().shape({
   productDescription: Yup.string().required(
     "Descrição do produto é obrigatória!"
   ),
+  productImage: Yup.string(),
 });
