@@ -2,28 +2,32 @@ import { Image, StatusBar, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { Inter_400Regular, Inter_900Black } from "@expo-google-fonts/inter";
 import { useFonts } from "expo-font";
-import { CloseIcon } from "../../../components";
+import { CloseIcon, Container } from "../../../components";
+import { ProductDescriptionText } from "./ProductDetail.styles";
 
 function ProductDetail({ navigation, route }) {
-  const { id } = route.params;
+  const { productId } = route.params;
   const product = useSelector((state) =>
-    state.customer.customers.find((customer) => customer.id == id)
+    state.product.products.find((product) => product.productId == productId)
   );
 
   const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_900Black });
   if (!fontsLoaded) {
     return <Text>Loading...</Text>;
   }
+
   return (
-    <View>
+    <Container>
       <StatusBar backgroundColor="transparent" translucent={true} />
       <CloseIcon onPress={() => navigation.goBack()} />
-      <View style={{ height: "50vh", width: "100%" }}>
-        <Image
-          source={require("../../../assets/product-photo-detail.png")}
-          style={{ width: "100%" }}
-        />
-      </View>
+      <Image
+        source={
+          product.productImage
+            ? { uri: product.productImage }
+            : require("../../../assets/product-without-image.png")
+        }
+        style={{ width: "100%", height: "50%" }}
+      />
       <View style={{ height: "50%", alignItems: "center" }}>
         <View style={{ width: "85%", marginTop: 30 }}>
           <View
@@ -39,26 +43,18 @@ function ProductDetail({ navigation, route }) {
                 fontFamily: "Inter_900Black",
               }}
             >
-              {product.name}
+              {product.productName}
             </Text>
             <Text style={{ fontSize: 14, fontFamily: "Inter_400Regular" }}>
-              R$ {product.price}
+              R$ {product.productPrice}
             </Text>
           </View>
-          <View style={{ width: "100%" }}>
-            <Text
-              style={{
-                textAlign: "justify",
-                color: "#71727A",
-                fontFamily: "Inter_400Regular",
-              }}
-            >
-              {product.description}
-            </Text>
-          </View>
+          <ProductDescriptionText fontFamily="Inter_400Regular">
+            {product.productDescription}
+          </ProductDescriptionText>
         </View>
       </View>
-    </View>
+    </Container>
   );
 }
 

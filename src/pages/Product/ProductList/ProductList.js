@@ -22,18 +22,29 @@ function ProductList({ navigation }) {
         renderItem={({ item }) => (
           <ProductItem
             onPress={() =>
-              navigation.navigate("ProductDetail", { id: item.id })
+              navigation.navigate("ProductDetail", {
+                productId: item.productId,
+              })
             }
           >
             <ProductImageContainer>
               <Image
-                source={require("../../../assets/product-without-image.png")}
-                style={{ borderTopLeftRadius: 16, borderTopRightRadius: 16 }}
+                source={
+                  item.productImage
+                    ? { uri: item.productImage }
+                    : require("../../../assets/product-without-image.png")
+                }
+                style={{
+                  width: 166,
+                  height: 91,
+                  borderTopLeftRadius: 16,
+                  borderTopRightRadius: 16,
+                }}
               />
             </ProductImageContainer>
             <ProductInfoContainer>
-              <ProductTitle>{item.name}</ProductTitle>
-              <ProductPrice>R${item.price}</ProductPrice>
+              <ProductTitle>{item.productName}</ProductTitle>
+              <ProductPrice>R${item.productPrice}</ProductPrice>
             </ProductInfoContainer>
           </ProductItem>
         )}
