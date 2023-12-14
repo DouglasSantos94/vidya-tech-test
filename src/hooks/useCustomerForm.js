@@ -7,7 +7,6 @@ import {
   normalizeCnpjNumber,
   normalizePhoneNumber,
 } from "../utils";
-import { useCep } from "./useCep";
 
 const useCustomerForm = () => {
   const {
@@ -37,7 +36,6 @@ const useCustomerForm = () => {
   const phoneFieldValue = watch("customerPhoneNumber");
   const cnpjFieldValue = watch("customerCnpj");
   const zipCodeFieldValue = watch("customerZipCode");
-  const { address, error } = useCep(zipCodeFieldValue);
 
   useEffect(() => {
     setValue("customerPhoneNumber", normalizePhoneNumber(phoneFieldValue));
@@ -48,9 +46,6 @@ const useCustomerForm = () => {
   }, [cnpjFieldValue]);
 
   useEffect(() => {
-    if (zipCodeFieldValue.length == 8) {
-      setValue("customerCity", address.localidade);
-    }
     setValue("customerZipCode", normalizeCepNumber(zipCodeFieldValue));
   }, [zipCodeFieldValue]);
 
@@ -60,7 +55,6 @@ const useCustomerForm = () => {
     formState: { errors },
     focusedField,
     setFocusedField,
-    address,
   };
 };
 
