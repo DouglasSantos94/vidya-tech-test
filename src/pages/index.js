@@ -1,3 +1,4 @@
+export { SelectCustomer } from "./Order/OrderCreate/SelectCustomer/SelectCustomer";
 export { CustomerForm } from "./Customer/CustomerForm/CustomerForm";
 export { CustomerList } from "./Customer/CustomerList/CustomerList";
 export { CustomerDetail } from "./Customer/CustomerDetail/CustomerDetail";
