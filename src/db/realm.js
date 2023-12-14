@@ -3,7 +3,7 @@ import { CustomerSchema } from "./schemas/CustomerSchema";
 
 export const getRealm = async () =>
   await Realm.open({
-    path: "decode-app",
+    path: "orders-app",
     schema: [CustomerSchema, ProductSchema],
     schemaVersion: 3,
   });
