@@ -9,7 +9,7 @@ import {
   SearchBar,
   TouchableListItem,
 } from "../../../../components";
-import { FlatList, Image } from "react-native";
+import { FlatList, Image, View } from "react-native";
 import { useSelector } from "react-redux";
 
 function SelectCustomer({ navigation }) {
@@ -31,23 +31,37 @@ function SelectCustomer({ navigation }) {
       <FlatList
         data={customers}
         renderItem={({ item }) => (
-          <TouchableListItem onPress={() => setSelectedId(item.customerId)}>
-            <ListItemInfo
-              id={Date.now()}
-              letters={generateInitialLetters(item.customerName)}
-            />
-            <Info>
-              <InfoTitle>{item.customerName}</InfoTitle>
-              <InfoText>{item.customerCnpj}</InfoText>
-            </Info>
-            <Image source={require("../../../../assets/selected-icon.png")} />
+          <TouchableListItem
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+            onPress={() => setSelectedId(item.customerId)}
+          >
+            <View style={{ flexDirection: "row" }}>
+              <ListItemInfo
+                id={Date.now()}
+                letters={generateInitialLetters(item.customerName)}
+              />
+              <Info>
+                <InfoTitle>{item.customerName}</InfoTitle>
+                <InfoText>{item.customerCnpj}</InfoText>
+              </Info>
+            </View>
+            {item.customerId === selectedId && (
+              <Image source={require("../../../../assets/selected-icon.png")} />
+            )}
           </TouchableListItem>
         )}
-        style={{ width: "90%", marginBottom: 30 }}
+        style={{ width: "85%", marginBottom: 30 }}
       />
       <Button
-        text="Cadastrar cliente"
-        onPress={() => navigation.navigate("NewCustomer")}
+        text="Salvar"
+        onPress={() =>
+          navigation.navigate("SelectProducts", {
+            customerId: selectedId,
+          })
+        }
       />
     </Container>
   );

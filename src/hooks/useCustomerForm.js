@@ -64,7 +64,6 @@ const useCustomerForm = () => {
     focusedField,
     setFocusedField,
     address,
-    setValue,
   };
 };
 
