@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Controller } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { CustomerFormContent } from "./CustomerForm.styles";
 import {
   Header,
@@ -12,6 +13,7 @@ import {
 } from "../../../components";
 import { useCustomerForm } from "../../../hooks/useCustomerForm";
 import { addCustomer } from "../../../store/customer/customerSlice";
+import { useCep } from "../../../hooks/useCep";
 
 function CustomerForm({ navigation }) {
   const {
@@ -20,7 +22,11 @@ function CustomerForm({ navigation }) {
     formState: { errors },
     focusedField,
     setFocusedField,
+    address,
   } = useCustomerForm();
+
+  console.log(address);
+
   const dispatch = useDispatch();
 
   const onSubmit = (data) => dispatch(addCustomer(data));
@@ -124,7 +130,7 @@ function CustomerForm({ navigation }) {
               focused={focusedField === name}
               hasError={errors[name]}
               onChangeText={onChange}
-              value={value}
+              value={address.uf ?? value}
             />
           )}
           name="customerState"
@@ -143,7 +149,7 @@ function CustomerForm({ navigation }) {
               focused={focusedField === name}
               hasError={errors[name]}
               onChangeText={onChange}
-              value={value}
+              value={address.localidade ?? value}
             />
           )}
           name="customerCity"
@@ -162,7 +168,7 @@ function CustomerForm({ navigation }) {
               focused={focusedField === name}
               hasError={errors[name]}
               onChangeText={onChange}
-              value={value}
+              value={address.bairro ?? value}
             />
           )}
           name="customerNeighborhood"
@@ -181,7 +187,7 @@ function CustomerForm({ navigation }) {
               focused={focusedField === name}
               hasError={errors[name]}
               onChangeText={onChange}
-              value={value}
+              value={address.logradouro ?? value}
             />
           )}
           name="customerStreet"
