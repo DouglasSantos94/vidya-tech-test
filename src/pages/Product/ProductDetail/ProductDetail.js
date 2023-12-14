@@ -12,6 +12,7 @@ function ProductDetail({ navigation, route }) {
   );
 
   const [fontsLoaded] = useFonts({ Inter_400Regular, Inter_900Black });
+
   if (!fontsLoaded) {
     return <Text>Loading...</Text>;
   }
