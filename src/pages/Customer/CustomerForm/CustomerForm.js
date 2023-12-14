@@ -13,7 +13,6 @@ import {
 } from "../../../components";
 import { useCustomerForm } from "../../../hooks/useCustomerForm";
 import { addCustomer } from "../../../store/customer/customerSlice";
-import { useCep } from "../../../hooks/useCep";
 
 function CustomerForm({ navigation }) {
   const {
