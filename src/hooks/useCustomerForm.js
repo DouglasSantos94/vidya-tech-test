@@ -48,8 +48,14 @@ const useCustomerForm = () => {
   }, [cnpjFieldValue]);
 
   useEffect(() => {
+    if (zipCodeFieldValue.replace("-", "").length === 8) {
+      setValue("customerState", address.uf);
+      setValue("customerCity", address.localidade);
+      setValue("customerNeighborhood", address.bairro);
+      setValue("customerStreet", address.logradouro);
+    }
     setValue("customerZipCode", normalizeCepNumber(zipCodeFieldValue));
-  }, [zipCodeFieldValue]);
+  }, [zipCodeFieldValue, address]);
 
   return {
     control,
@@ -58,6 +64,7 @@ const useCustomerForm = () => {
     focusedField,
     setFocusedField,
     address,
+    setValue,
   };
 };
 
