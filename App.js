@@ -17,8 +17,10 @@ import {
   ProductList,
   ProductDetail,
   OrderList,
+  SelectCustomer,
 } from "./src/pages";
 import store from "./src/store/store";
+import { SelectProducts } from "./src/pages/Order/OrderCreate/SelectProducts/SelectProducts";
 
 const CustomerStack = createStackNavigator();
 const ProductStack = createStackNavigator();
@@ -78,23 +80,23 @@ function OrderTabs() {
   return (
     <OrderStack.Navigator>
       <OrderStack.Screen
-        name="Orders"
-        component={OrderList}
+        name="SelectCustomer"
+        component={SelectCustomer}
         options={{
           headerTitleAlign: "center",
           headerShadowVisible: false,
         }}
       />
       <OrderStack.Screen
-        name="NewOrder"
-        component={CustomerForm}
+        name="SelectProducts"
+        component={SelectProducts}
         options={{ headerShown: false, presentation: "modal" }}
       />
-      <OrderStack.Screen
-        name="OrderDetail"
-        component={CustomerDetail}
+      {/* <OrderStack.Screen
+        name="SelectCustomer"
+        component={SelectCustomer}
         options={{ headerShown: false, presentation: "modal" }}
-      />
+      /> */}
     </OrderStack.Navigator>
   );
 }
